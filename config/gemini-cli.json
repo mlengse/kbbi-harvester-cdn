@@ -1,9 +1,0 @@
-{
-  "mcpServers": {
-    "kbbi": {
-      "command": "node",
-      "args": ["/ABSOLUTE/PATH/TO/kbbi-mcp-server/build/index.js"],
-      "env": {}
-    }
-  }
-}
