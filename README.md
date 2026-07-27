@@ -11,7 +11,7 @@ Data KBBI (Kamus Besar Bahasa Indonesia) — 112K+ entri kamus untuk training NL
 ### CDN (langsung)
 
 ```
-https://cdn.jsdelivr.net/gh/mlengse/kbbi-harvester-cdn@main/word-details/P/pintar.json
+https://cdn.jsdelivr.net/gh/mlengse/kbbi-harvester-cdn@data-v2/word-details/P/pintar.json
 ```
 
 ### Clone
@@ -19,6 +19,20 @@ https://cdn.jsdelivr.net/gh/mlengse/kbbi-harvester-cdn@main/word-details/P/pinta
 ```bash
 git clone --depth 1 https://github.com/mlengse/kbbi-harvester-cdn.git
 ```
+
+### Local Development dengan MCP Server
+
+Jika menjalankan `kbbi-mcp-server` secara lokal, clone repo ini sebagai sibling directory:
+```bash
+# Asumsi struktur:
+# bahasa/
+#   data/kbbi-harvester-cdn/    ← repo ini
+#   framework/kbbi-mcp-server/  ← MCP server
+
+git clone https://github.com/mlengse/kbbi-harvester-cdn.git data/kbbi-harvester-cdn
+git clone https://github.com/mlengse/kbbi-mcp-server.git framework/kbbi-mcp-server
+```
+`kbbi-mcp-server` akan otomatis membaca file lokal dari repo ini jika path-nya sesuai, lalu fallback ke CDN.
 
 ---
 
