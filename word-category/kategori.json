@@ -5,7 +5,7 @@
     "total_files_found": 112596,
     "total_unique_categories": 443,
     "total_category_combinations": 744,
-    "extraction_date": "2025-08-06"
+    "last_updated": "2025-08-06"
   },
   "individual_categories": [
     {
@@ -62,15 +62,15 @@
     },
     {
       "kode": "ArS",
-      "nama": "Armati Sarma"
+      "nama": "Arsitektur"
+    },
+    {
+      "kode": "Ark",
+      "nama": "Arkais"
     },
     {
       "kode": "Ark",
       "nama": "Arkeologi"
-    },
-    {
-      "kode": "Ars",
-      "nama": "Arsitektur"
     },
     {
       "kode": "Asm",
@@ -81,16 +81,8 @@
       "nama": "Astronomi"
     },
     {
-      "kode": "Astro",
-      "nama": "Astronomi"
-    },
-    {
       "kode": "Astrol",
       "nama": "Astrologi"
-    },
-    {
-      "kode": "Astron",
-      "nama": "Astronomi"
     },
     {
       "kode": "Awy",
@@ -127,10 +119,6 @@
     {
       "kode": "Bgk",
       "nama": "Bungku"
-    },
-    {
-      "kode": "BhDI",
-      "nama": "-"
     },
     {
       "kode": "BhDi",
@@ -629,10 +617,6 @@
       "nama": "Kola"
     },
     {
-      "kode": "Kom",
-      "nama": "Ilmu Komunikasi"
-    },
-    {
       "kode": "Komp",
       "nama": "Komputer"
     },
@@ -785,16 +769,16 @@
       "nama": "Melayu Medan"
     },
     {
+      "kode": "Mdk",
+      "nama": "Madiun"
+    },
+    {
       "kode": "Mdl",
       "nama": "Modole"
     },
     {
       "kode": "Mdr",
       "nama": "Madura"
-    },
-    {
-      "kode": "Me",
-      "nama": "Moronene"
     },
     {
       "kode": "Med",
@@ -947,10 +931,6 @@
     {
       "kode": "Oi",
       "nama": "Oirata"
-    },
-    {
-      "kode": "Olahraga",
-      "nama": "O"
     },
     {
       "kode": "Olr",
@@ -1405,18 +1385,6 @@
       "nama": "Akronim"
     },
     {
-      "kode": "akr",
-      "nama": "akronim"
-    },
-    {
-      "kode": "ark",
-      "nama": "Arkais"
-    },
-    {
-      "kode": "ark",
-      "nama": "Arkeologi"
-    },
-    {
       "kode": "bahasa",
       "nama": "Bahasa"
     },
@@ -1435,18 +1403,6 @@
     {
       "kode": "cak",
       "nama": "Cakapan"
-    },
-    {
-      "kode": "cak",
-      "nama": "cakap"
-    },
-    {
-      "kode": "dipl",
-      "nama": "Diplomatik"
-    },
-    {
-      "kode": "eko",
-      "nama": "Ekologi"
     },
     {
       "kode": "el",
@@ -1525,10 +1481,6 @@
       "nama": "Komputer"
     },
     {
-      "kode": "kb",
-      "nama": "kata benda"
-    },
-    {
       "kode": "ki",
       "nama": "Kata Invasi"
     },
@@ -1543,14 +1495,6 @@
     {
       "kode": "ki",
       "nama": "Klasik"
-    },
-    {
-      "kode": "ki",
-      "nama": "kata inggris"
-    },
-    {
-      "kode": "ki",
-      "nama": "kiasan"
     },
     {
       "kode": "ki",
@@ -1571,10 +1515,6 @@
     {
       "kode": "klitik",
       "nama": "-"
-    },
-    {
-      "kode": "komp",
-      "nama": "Komputer"
     },
     {
       "kode": "konfiks pembentuk adjektiva",
@@ -1605,20 +1545,8 @@
       "nama": "Keterampilan"
     },
     {
-      "kode": "kt",
-      "nama": "kata benda"
-    },
-    {
-      "kode": "med",
-      "nama": "Medis"
-    },
-    {
       "kode": "n",
       "nama": "Nomina"
-    },
-    {
-      "kode": "nom",
-      "nama": "Nama"
     },
     {
       "kode": "num",
@@ -1642,10 +1570,6 @@
     },
     {
       "kode": "pas",
-      "nama": "Pasif"
-    },
-    {
-      "kode": "pasif",
       "nama": "Pasif"
     },
     {
@@ -1681,10 +1605,6 @@
       "nama": "Pronomina"
     },
     {
-      "kode": "pron",
-      "nama": "Pronomina"
-    },
-    {
       "kode": "prop",
       "nama": "Nama"
     },
@@ -1711,10 +1631,6 @@
     {
       "kode": "sing",
       "nama": "Singkatan"
-    },
-    {
-      "kode": "sing",
-      "nama": "singkatan"
     },
     {
       "kode": "sufiks pembentuk adjektiva",
@@ -1762,10 +1678,6 @@
     },
     {
       "kode": "vul",
-      "nama": "Vulgar"
-    },
-    {
-      "kode": "vulg",
       "nama": "Vulgar"
     },
     {

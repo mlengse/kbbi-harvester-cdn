@@ -10,7 +10,7 @@
   },
   "category_files": {
     "complete_categories": {
-      "file": "categories.json",
+      "file": "kategori.json",
       "description": "Complete list of all unique categories and popular combinations",
       "contains": {
         "individual_categories": 443,
@@ -18,27 +18,27 @@
       }
     },
     "word_classes": {
-      "file": "word-classes.json", 
+      "file": "kelas-kata.json",
       "description": "Grammatical word classes (parts of speech)",
       "contains": {
-        "classes": 24,
+        "classes": 25,
         "examples": ["Nomina", "Verba", "Adjektiva", "Adverbia"]
       }
     },
     "languages": {
-      "file": "languages.json",
+      "file": "bahasa.json",
       "description": "Language and regional classifications",
       "contains": {
-        "languages": 150,
+        "languages": 16,
         "types": ["foreign_language", "regional_language", "classical_language"],
         "examples": ["Arab", "Jawa", "Inggris", "Betawi"]
       }
     },
     "subject_domains": {
-      "file": "subject-domains.json",
+      "file": "bidang-subjek.json",
       "description": "Subject domain and field classifications",
       "contains": {
-        "domains": 80,
+        "domains": 31,
         "categories": ["science", "medical", "social_science", "humanities", "arts"],
         "examples": ["Kimia", "Kedokteran", "Sastra", "Olahraga"]
       }
@@ -58,10 +58,10 @@
   "api_endpoints": {
     "description": "Suggested CDN endpoints for category data:",
     "endpoints": [
-      "https://cdn.jsdelivr.net/gh/mlengse/kbbi-harvester-cdn@main/word-category/categories.json",
-      "https://cdn.jsdelivr.net/gh/mlengse/kbbi-harvester-cdn@main/word-category/word-classes.json",
-      "https://cdn.jsdelivr.net/gh/mlengse/kbbi-harvester-cdn@main/word-category/languages.json",
-      "https://cdn.jsdelivr.net/gh/mlengse/kbbi-harvester-cdn@main/word-category/subject-domains.json"
+      "https://cdn.jsdelivr.net/gh/mlengse/kbbi-harvester-cdn@main/word-category/kategori.json",
+      "https://cdn.jsdelivr.net/gh/mlengse/kbbi-harvester-cdn@main/word-category/kelas-kata.json",
+      "https://cdn.jsdelivr.net/gh/mlengse/kbbi-harvester-cdn@main/word-category/bahasa.json",
+      "https://cdn.jsdelivr.net/gh/mlengse/kbbi-harvester-cdn@main/word-category/bidang-subjek.json"
     ]
   },
   "most_common_categories": [

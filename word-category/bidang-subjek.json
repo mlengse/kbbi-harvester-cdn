@@ -2,7 +2,7 @@
   "meta": {
     "description": "KBBI Subject Domain Classifications",
     "extracted_from": "KBBI Harvester Database",
-    "total_domains": 80,
+    "total_domains": 31,
     "last_updated": "2025-08-06"
   },
   "subject_domains": [

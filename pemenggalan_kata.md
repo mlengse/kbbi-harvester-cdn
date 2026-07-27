@@ -88,93 +88,56 @@ c. Pemenggalan kata yang mendapat sisipan dilakukan seperti pada kata  dasar. Mi
 - si-nam-bung  
 - te-lun-juk  
 
-d. Pemenggalan kata yang menyebabkan munculnya satu huruf di awal  atau akhir baris tidak dilakukan. 
-**Misalnya:**
+d. Pemenggalan kata yang menyebabkan munculnya satu huruf di awal atau akhir baris tidak dilakukan.
 
----
-Beberapa pendapat mengenai masalah *i*-
+> **Contoh yang salah:**
+>
+> Beberapa pendapat mengenai masalah *i*-*tu* telah disampaikan oleh pembicara.
+>
+> Walaupun makanan itu gratis, mereka tidak *ma*-*u* mengambilnya.
+>
+> Penerapan protokol kesehatan adalah cara termudah *mengakhir*-*i* pandemi ini.
 
-*tu* telah disampaikan oleh pembicara.` 
+> **Penulisan yang seharusnya dilakukan adalah sebagai berikut.**
+>
+> Beberapa pendapat mengenai masalah *itu* telah disampaikan oleh pembicara.
+>
+> Walaupun makanan itu gratis, mereka tidak *mau* mengambilnya.
+>
+> Penerapan protokol kesehatan adalah cara termudah *mengakhiri* pandemi ini.
 
----
-Walaupun makanan itu gratis, mereka tidak *ma*- 
+3. Jika kata terdiri atas dua unsur atau lebih dan salah satu unsurnya itu dapat bergabung dengan unsur lain, pemenggalannya dilakukan di antara unsur-unsur itu. Misalnya:
+   - biografi bio-grafi
+   - biodata bio-data
+   - fotografi foto-grafi
+   - fotokopi foto-kopi
+   - introspeksi intro-speksi
+   - introjeksi intro-jeksi
+   - kilogram kilo-gram
+   - kilometer kilo-meter
+   - pascapanen pasca-panen
+   - pascasarjana pasca-sarjana
 
-*u* mengambilnya. 
+4. Nama orang yang terdiri atas dua kata atau lebih pada akhir baris dipenggal di antara kata tersebut. Misalnya:
+   - Pencetus nama bahasa Indonesia dalam Kongres Pemuda adalah Mohammad Tabrani.
+   - Lagu "Indonesia Raya" dikumandangkan pada Kongres Pemuda II oleh Wage Rudolf Supratman.
+   - *Layar Terkembang* yang terbit pada 1937 dikarang oleh Sutan Takdir Alisjahbana.
 
----
-Penerapan protokol kesehatan adalah cara termudah *mengakhir*- 
+5. Singkatan tidak dipenggal.
 
-*i* pandemi ini. 
+> **Contoh yang salah:**
+>
+> Ia telah mengabdi selama sepuluh tahun di *BKKBN*.
+>
+> Semua pengguna kendaraan bermotor wajib membawa *STNK*.
+>
+> Pujangga terakhir Keraton Surakarta bergelar *R.Ng.* Rangga Warsita.
 
----
-**Penulisan yang seharusnya dilakukan adalah sebagai berikut.**
-
----
-Beberapa pendapat mengenai masalah 
-
-*itu* telah disampaikan oleh pembicara.  
-
----
-Walaupun makanan itu gratis, mereka tidak 
-
-*mau* mengambilnya. 
-
----
-Penerapan protokol kesehatan adalah cara termudah *mengakhiri* 
-
-pandemi ini. 
-
----
-3\. Jika kata terdiri atas dua unsur atau lebih dan salah satu unsurnya itu dapat bergabung dengan unsur lain, pemenggalannya dilakukan di  antara unsur-unsur itu. Misalnya: 
-- biografi bio-grafi 
-- biodata bio-data 
-- fotografi foto-grafi 
-- fotokopi foto-kopi 
-- introspeksi intro-speksi 
-- introjeksi intro-jeksi 
-- kilogram kilo-gram 
-- kilometer kilo-meter 
-- pascapanen pasca-panen 
-- pascasarjana pasca-sarjana 
-
-4\. Nama orang yang terdiri atas dua kata atau lebih pada akhir baris  dipenggal di antara kata tersebut. Misalnya: 
-- Pencetus nama bahasa Indonesia dalam Kongres Pemuda adalah Mohammad Tabrani.  
-- Lagu "Indonesia Raya" dikumandangkan pada Kongres Pemuda II oleh Wage  Rudolf Supratman. 
-- *Layar Terkembang* yang terbit pada 1937 dikarang oleh Sutan Takdir  Alisjahbana. 
-
-5\. Singkatan tidak dipenggal.  
-**Misalnya:** 
-
---- 
-Ia telah mengabdi selama sepuluh tahun di *BKK* 
-
-*BN*. 
-
----
-Semua pengguna kendaraan bermotor wajib membawa *ST* 
-
-*NK*. 
-
----
-Pujangga terakhir Keraton Surakarta bergelar *R.* 
-
-*Ng.* Rangga Warsita. 
-
----
-**Penulisan yang seharusnya dilakukan adalah sebagai berikut.** 
-
----
-Ia telah mengabdi selama sepuluh tahun di 
-
-*BKKBN*. 
-
----
-Semua pengguna kendaraan bermotor wajib membawa 
-
-*STNK*. 
-
----
-Pujangga terakhir Keraton Surakarta bergelar 
-
-*R.Ng.* Rangga Warsita. 
+> **Penulisan yang seharusnya dilakukan adalah sebagai berikut.**
+>
+> Ia telah mengabdi selama sepuluh tahun di *BKKBN*.
+>
+> Semua pengguna kendaraan bermotor wajib membawa *STNK*.
+>
+> Pujangga terakhir Keraton Surakarta bergelar *R.Ng.* Rangga Warsita.
 

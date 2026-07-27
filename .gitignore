@@ -1,6 +1,3 @@
-cleanup_semicolons.py
-extract_categories.py
-
 **.py
 **.sh
 
@@ -12,6 +9,7 @@ dist/
 *.d.ts.map
 
 .idea/
+.vscode/
 
 # OS junk
 .DS_Store
