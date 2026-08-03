@@ -3392,7 +3392,7 @@ f76«
 
 **`4»5c`** 
 
-**`./`**   
+**`orthos`**   
 **`4 M .`**   
 **`2ned`**   
 **`4 med.`**   
@@ -3891,7 +3891,7 @@ f76«
 **`3opera`**   
 **`4operag 2oph`** 
 
-**`./`**  
+**`orthos`**  
 **TgXBJ HYPHENATION PATTERNS 79** 
 
 **`eSpham oSphar epSing o3pit`**   
