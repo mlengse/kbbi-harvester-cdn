@@ -134,7 +134,7 @@ Repo ini berisi **112K+ files**. Jika di Windows:
 
 ## License
 
-- **Source Code**: GNU General Public License v3.0 (GPLv3) — Copyright (c) 2026 [mLengse](mailto:medtosys@gmail.com).
+- **Source Code**: ISC License — Copyright (c) 2026 [mLengse](mailto:medtosys@gmail.com).
 - **Original Dictionary Data**: ISC License — Copyright (c) 2025 Listiananda Apriliawan.
 
 ---
