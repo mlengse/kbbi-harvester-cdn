@@ -44,10 +44,9 @@ wordlist/           Daftar kata per huruf (A–Z)
 word-category/      Kategori: kelas kata, bahasa asal, bidang subjek
 word-with-peribahasa/   Kata yang memiliki peribahasa
 lexicon/            Root words, derived words, derived-to-root mappings (+ kelas kata)
-hyphenation/        Data pemenggalan suku kata (format .dic dan JSON)
+hyphenation/        Data pemenggalan suku kata (format .dic dan JSON) + aturan pemenggalan EYD V
 schemas/            JSON Schema untuk validasi struktur data
 orthos/             Referensi Liang Thesis & Patgen2 Tutorial
-pemenggalan_kata.md Aturan pemenggalan kata EYD V
 ```
 
 ---
