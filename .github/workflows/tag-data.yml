@@ -37,6 +37,8 @@ jobs:
             echo "HEAD $HEAD sudah punya tag: $EXISTING — skip."
             exit 0
           fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           TAG="data-v$NEXT"
           git tag -a "$TAG" -m "Data release $TAG — commit $HEAD"
           git push origin "$TAG"
