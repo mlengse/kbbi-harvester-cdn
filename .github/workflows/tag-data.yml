@@ -1,0 +1,43 @@
+name: Auto-tag data release
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+
+      - name: Compute next data-vN tag
+        id: compute
+        run: |
+          HEAD=$(git rev-parse HEAD)
+          MAX=$(git tag -l 'data-v[0-9]*' | sed -E 's/^data-v//' | sort -n | tail -1)
+          [ -z "$MAX" ] && MAX=0
+          NEXT=$((MAX + 1))
+          echo "head=$HEAD" >> "$GITHUB_OUTPUT"
+          echo "next=$NEXT" >> "$GITHUB_OUTPUT"
+
+      - name: Create and push tag (skip if HEAD already tagged)
+        run: |
+          HEAD="${{ steps.compute.outputs.head }}"
+          NEXT="${{ steps.compute.outputs.next }}"
+          EXISTING=$(git tag -l 'data-v*' --points-at "$HEAD")
+          if [ -n "$EXISTING" ]; then
+            echo "HEAD $HEAD sudah punya tag: $EXISTING — skip."
+            exit 0
+          fi
+          TAG="data-v$NEXT"
+          git tag -a "$TAG" -m "Data release $TAG — commit $HEAD"
+          git push origin "$TAG"
+          echo "Created and pushed $TAG"

@@ -11,7 +11,7 @@ Data KBBI (Kamus Besar Bahasa Indonesia) — 112K+ entri kamus untuk training NL
 ### CDN (langsung)
 
 ```
-https://cdn.jsdelivr.net/gh/mlengse/kbbi-harvester-cdn@data-v2/word-details/P/pintar.json
+https://cdn.jsdelivr.net/gh/mlengse/kbbi-harvester-cdn@data-v4/word-details/P/pintar.json
 ```
 
 ### Clone
@@ -43,12 +43,33 @@ word-details/       112K+ file JSON — definisi, pemenggalan, rootWord, kata tu
 wordlist/           Daftar kata per huruf (A–Z)
 word-category/      Kategori: kelas kata, bahasa asal, bidang subjek
 word-with-peribahasa/   Kata yang memiliki peribahasa
-lexicon/            Root words, derived words, derived-to-root mappings
+lexicon/            Root words, derived words, derived-to-root mappings (+ kelas kata)
 hyphenation/        Data pemenggalan suku kata (format .dic dan JSON)
 schemas/            JSON Schema untuk validasi struktur data
 orthos/             Referensi Liang Thesis & Patgen2 Tutorial
 pemenggalan_kata.md Aturan pemenggalan kata EYD V
 ```
+
+---
+
+## Lexicon (flat files untuk training)
+
+| File | Isi |
+|------|-----|
+| `lexicon/root_words.txt` | Semua kata dasar (11.170) |
+| `lexicon/derived_words.txt` | Semua kata berimbuhan (33.268) |
+| `lexicon/derived_to_root.json` | Mapping kata berimbuhan → kata dasar |
+| `lexicon/derived_to_root_with_kelas.json` | Mapping + kode kelas kata (tipe `kelas_kata`) per kata turunan |
+
+Format `derived_to_root_with_kelas.json`:
+
+```json
+{
+  "membantu": { "kataDasar": "bantu", "kelasKata": ["v"] }
+}
+```
+
+Dihasilkan ulang dengan `node scripts/generate-lexicon.cjs`.
 
 ---
 
