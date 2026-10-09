@@ -2,20 +2,16 @@
 
 Data KBBI (Kamus Besar Bahasa Indonesia) — 112K+ entri kamus untuk training NLP stemmer dan pemenggalan kata.
 
+> **Disclaimer:** This project is not affiliated with, endorsed by, or connected to Badan Pengembangan dan Pembinaan Bahasa (Badan Bahasa) or Kementerian Pendidikan Dasar dan Menengah (Kemendikdasmen). The dictionary content belongs to its respective owners. This repository only packages publicly accessible data for developer convenience.
+
 > Untuk MCP server yang menggunakan data ini, lihat [kbbi-mcp-server](https://github.com/mlengse/kbbi-mcp-server).
 
----
-
-## Akses Data
+## Quick Start
 
 ### CDN (langsung)
 
-```
-<<<<<<< HEAD
+```text
 https://cdn.jsdelivr.net/gh/mlengse/kbbi-harvester-cdn@main/word-details/P/pintar.json
-=======
-https://cdn.jsdelivr.net/gh/mlengse/kbbi-harvester-cdn@data-v4/word-details/P/pintar.json
->>>>>>> 5019a463795b80712859bc0545cef6206e0a4642
 ```
 
 ### Clone
@@ -27,6 +23,7 @@ git clone --depth 1 https://github.com/mlengse/kbbi-harvester-cdn.git
 ### Local Development dengan MCP Server
 
 Jika menjalankan `kbbi-mcp-server` secara lokal, clone repo ini sebagai sibling directory:
+
 ```bash
 # Asumsi struktur:
 # bahasa/
@@ -36,35 +33,28 @@ Jika menjalankan `kbbi-mcp-server` secara lokal, clone repo ini sebagai sibling 
 git clone https://github.com/mlengse/kbbi-harvester-cdn.git data/kbbi-harvester-cdn
 git clone https://github.com/mlengse/kbbi-mcp-server.git framework/kbbi-mcp-server
 ```
+
 `kbbi-mcp-server` akan otomatis membaca file lokal dari repo ini jika path-nya sesuai, lalu fallback ke CDN.
 
 ---
 
 ## Struktur Repository
 
-```
-word-details/       112K+ file JSON — definisi, pemenggalan, rootWord, kata turunan
-wordlist/           Daftar kata per huruf (A–Z)
-word-category/      Kategori: kelas kata, bahasa asal, bidang subjek
+```text
+word-details/           112K+ file JSON — definisi, pemenggalan, rootWord, kata turunan
+wordlist/               Daftar kata per huruf (A–Z)
+word-category/          Kategori: kelas kata, bahasa asal, bidang subjek
 word-with-peribahasa/   Kata yang memiliki peribahasa
-lexicon/            Root words, derived words, derived-to-root mappings (+ kelas kata)
-hyphenation/        Data pemenggalan suku kata (format .dic dan JSON) + aturan pemenggalan EYD V
-schemas/            JSON Schema untuk validasi struktur data
-orthos/             Referensi Liang Thesis & Patgen2 Tutorial
+lexicon/                Root words, derived words, derived-to-root mappings (+ kelas kata)
+hyphenation/            Data pemenggalan suku kata (.dic dan JSON) + aturan pemenggalan EYD V
+schemas/                JSON Schema untuk validasi struktur data
+orthos/                 Referensi Liang Thesis & Patgen2 Tutorial
 ```
 
 ---
 
 ## Lexicon (flat files untuk training)
 
-<<<<<<< HEAD
-1. 🔎 Look up the word you want in the `wordlist` folder.
-2. 📂 Find the corresponding JSON file in `word-details/{First Letter}/{word}.json`  
-   (Spaces in words? Use `%20`! For example, `a tempo` → `a%20tempo.json`)
-3. 🌐 Use the magic CDN URL:  
-   ```
-   https://cdn.jsdelivr.net/gh/mlengse/kbbi-harvester-cdn@main/word-details/{First Letter}/{word}.json
-=======
 | File | Isi |
 |------|-----|
 | `lexicon/root_words.txt` | Semua kata dasar (11.170) |
@@ -115,7 +105,17 @@ Dihasilkan ulang dengan `node scripts/generate-lexicon.cjs`.
 
 ### Schema
 
-Lihat [`schemas/word-detail.schema.json`](schemas/word-detail.schema.json) untuk definisi lengkap struktur data.
+Lihat [`schemas/word-detail.schema.json`](schemas/word-detail.schema.json) untuk definisi lengkap struktur data, termasuk field `authenticated`.
+
+### Cara mengambil definisi sebuah kata
+
+1. 🔎 Cari kata di folder `wordlist`.
+2. 📂 Buka file JSON terkait di `word-details/{Huruf Awal}/{kata}.json`
+   (kata dengan spasi gunakan `%20`, contoh: `a tempo` → `a%20tempo.json`).
+3. 🌐 Atau ambil langsung via CDN:
+   ```text
+   https://cdn.jsdelivr.net/gh/mlengse/kbbi-harvester-cdn@main/word-details/{Huruf Awal}/{kata}.json
+   ```
 
 ---
 
@@ -130,6 +130,23 @@ Lihat [`schemas/word-detail.schema.json`](schemas/word-detail.schema.json) untuk
 
 ---
 
+## Path Rules
+
+- Folder names use the **uppercase first letter** of the word (e.g. `P/pintar.json`)
+- Filenames match the `word` field verbatim with `.json` appended
+- Spaces in multi-word entries are encoded as `%20` in URLs
+- Filenames are **Windows-safe**: no curly quotes, no trailing dots or spaces, no reserved characters
+
+### Word-to-Path Conversion
+
+| Word | Path |
+|------|------|
+| `pintar` | `word-details/P/pintar.json` |
+| `a tempo` | `word-details/A/a%20tempo.json` |
+| `Amerika Serikat` | `word-details/A/Amerika%20Serikat.json` |
+
+---
+
 ## Windows Compatibility
 
 Repo ini berisi **112K+ files**. Jika di Windows:
@@ -137,46 +154,34 @@ Repo ini berisi **112K+ files**. Jika di Windows:
 1. **Enable long paths**:
    ```powershell
    New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force
->>>>>>> 5019a463795b80712859bc0545cef6206e0a4642
    ```
 2. **Configure Git**: `git config --system core.longpaths true`
 3. **Exclude folder dari Windows Defender** real-time scanning
 4. **Shallow clone**: `git clone --depth 1`
 
+Semua nama file dan folder dibuat kompatibel dengan Windows: tanpa karakter ilegal (`< > : " / \ | ? *`), tanpa tanda kutip keriting, serta tanpa titik atau spasi di akhir nama. Repo dapat di-clone dan dikerjakan baik di Windows native maupun di WSL.
+
+---
+
+## Offline Use
+
+- **`index.json`** — flat JSON array berisi seluruh 112.596 key kata (untuk lookup/filter cepat tanpa permintaan CDN).
+
+---
+
+## Related Projects
+
+- [kbbi-mcp-server](https://github.com/mlengse/kbbi-mcp-server) — MCP server yang mengonsumsi dataset ini
+- [kbbi-app](https://github.com/Naandalist/kbbi-app) — Web application untuk menjelajah entri KBBI
+- [webland-kbbi](https://github.com/Naandalist/webland-kbbi) — Antarmuka web KBBI
+
 ---
 
 ## License
 
-<<<<<<< HEAD
-Want the definition for “pintar”?  
-Just hit:
+MIT License
 
-```
-https://cdn.jsdelivr.net/gh/mlengse/kbbi-harvester-cdn@main/word-details/P/pintar.json
-```
+- **Source Code**: Copyright (c) 2026 [mLengse](mailto:medtosys@gmail.com)
+- **Original Dictionary Data**: Copyright (c) 2025 Listiananda Apriliawan
 
----
-
-## 🤝 Contributing & Feedback
-
-Found a missing word or have a suggestion? PRs and issues are always welcome – let’s make KBBI even better together! 💬🙌
-
----
-
-## 🏷️ License
-
-Open-source and free to use. Let your ideas fly! ✈️
-
----
-
-Made with ⏰ by [Naandalist](https://github.com/Naandalist)
-Forked by [mlengse](https://github.com/mlengse)
-=======
-- **Source Code**: ISC License — Copyright (c) 2026 [mLengse](mailto:medtosys@gmail.com).
-- **Original Dictionary Data**: ISC License — Copyright (c) 2025 Listiananda Apriliawan.
-
----
-
-Dikembangkan untuk keperluan training NLP/Stemmer.
-Data KBBI original di-harvest oleh [mlengse](https://github.com/mlengse).
->>>>>>> 5019a463795b80712859bc0545cef6206e0a4642
+Made with ⏰ by [Naandalist](https://github.com/Naandalist), forked by [mlengse](https://github.com/mlengse).

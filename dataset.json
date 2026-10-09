@@ -1,0 +1,10 @@
+{
+  "name": "kbbi-harvester-cdn",
+  "unofficial": true,
+  "source": "Kamus Besar Bahasa Indonesia (KBBI) — publicly accessible data",
+  "harvested_at": "2025-08-06",
+  "schema_version": "1.0.0",
+  "entry_count": 112596,
+  "makna_count": 153299,
+  "cdn_base": "https://cdn.jsdelivr.net/gh/Naandalist/kbbi-harvester-cdn@v1.0.0"
+}

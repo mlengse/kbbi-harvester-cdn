@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check for junk files
+        run: |
+          JUNK=$(find . -name '.DS_Store' -o -name 'Thumbs.db' -o -path './.vscode/*' -o -path './.idea/*' -o -name '*.pyc' -o -path '*/__pycache__/*')
+          if [ -n "$JUNK" ]; then
+            echo "Junk files found:"
+            echo "$JUNK"
+            exit 1
+          fi
+          echo "No junk files."
+
+      - name: Validate JSON files
+        run: python3 .github/scripts/validate_json.py
+
+      - name: Smoke test
+        run: python3 .github/scripts/smoke_test.py

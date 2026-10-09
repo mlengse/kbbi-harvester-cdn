@@ -1,0 +1,94 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "KBBI Word Detail",
+  "description": "Schema for word-details JSON files in the KBBI CDN dataset",
+  "type": "object",
+  "required": ["word", "entries"],
+  "properties": {
+    "word": {
+      "type": "string",
+      "description": "The headword"
+    },
+    "entries": {
+      "type": "array",
+      "description": "Array of entry objects",
+      "items": {
+        "type": "object",
+        "required": ["id", "nama", "makna"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique entry identifier"
+          },
+          "nama": {
+            "type": "string",
+            "description": "Syllabified form of the word"
+          },
+          "nomor": {
+            "type": "string",
+            "description": "Entry number (may be empty)"
+          },
+          "makna": {
+            "type": "array",
+            "description": "Array of meanings",
+            "items": {
+              "type": "object",
+              "required": ["nomor", "definisi", "kelasKata", "terkait"],
+              "properties": {
+                "nomor": {
+                  "type": "string",
+                  "description": "Meaning number"
+                },
+                "kelasKata": {
+                  "type": "array",
+                  "description": "Grammatical categories",
+                  "items": {
+                    "type": "object",
+                    "required": ["kode", "nama", "tipe"],
+                    "properties": {
+                      "kode": { "type": "string" },
+                      "nama": { "type": "string" },
+                      "tipe": {
+                        "type": "string",
+                        "enum": ["kelas_kata", "bahasa", "bidang_subjek", "lainnya"]
+                      }
+                    }
+                  }
+                },
+                "definisi": {
+                  "type": "string",
+                  "description": "Definition text"
+                },
+                "contoh": {
+                  "type": "array",
+                  "description": "Usage examples",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "nomor": { "type": "integer" },
+                      "teks": {
+                        "type": "string",
+                        "description": "Example text; '--' marks where the headword appears"
+                      }
+                    }
+                  }
+                },
+                "terkait": {
+                  "type": "object",
+                  "description": "Related words and expressions",
+                  "properties": {
+                    "kataTurunan": { "type": "array", "items": { "type": "string" } },
+                    "gabunganKata": { "type": "array", "items": { "type": "string" } },
+                    "peribahasa": { "type": "array", "items": { "type": "string" } },
+                    "idiom": { "type": "array", "items": { "type": "string" } },
+                    "peribahasa_dan_makna": { "type": "array", "items": { "type": "string" } }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
