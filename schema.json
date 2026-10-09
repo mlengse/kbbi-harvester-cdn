@@ -1,5 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "$comment": "LEGACY: superseded by schemas/word-detail.schema.json (authoritative). Not used for validation.",
   "title": "KBBI Word Detail",
   "description": "Schema for word-details JSON files in the KBBI CDN dataset",
   "type": "object",

@@ -19,7 +19,7 @@
           "definisi": "toko yang menjual berbagai jenis barang",
           "contoh": [
             {
-              "nomor": "1",
+              "nomor": 1,
               "teks": "Toko serba ada itu menjual berbagai macam produk, mulai dari pakaian hingga elektronik."
             }
           ]
@@ -50,7 +50,7 @@
           "definisi": "toko yang menyediakan berbagai kebutuhan sehari-hari",
           "contoh": [
             {
-              "nomor": "2",
+              "nomor": 2,
               "teks": "Orang tua saya selalu berbelanja di toko serba ada karena praktis."
             }
           ]
@@ -81,7 +81,7 @@
           "definisi": "tempat berbelanja yang modern dan nyaman",
           "contoh": [
             {
-              "nomor": "3",
+              "nomor": 3,
               "teks": "Toko serba ada di kota ini sangat modern dan nyaman untuk berbelanja."
             }
           ]
@@ -112,7 +112,7 @@
           "definisi": "toko besar yang menjual aneka barang dengan harga kompetitif",
           "contoh": [
             {
-              "nomor": "4",
+              "nomor": 4,
               "teks": "Harga barang di toko serba ada sangat kompetitif sehingga banyak orang berdatangan."
             }
           ]

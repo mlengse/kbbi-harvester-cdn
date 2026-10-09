@@ -105,7 +105,7 @@ Dihasilkan ulang dengan `node scripts/generate-lexicon.cjs`.
 
 ### Schema
 
-Lihat [`schemas/word-detail.schema.json`](schemas/word-detail.schema.json) untuk definisi lengkap struktur data, termasuk field `authenticated`.
+[`schemas/word-detail.schema.json`](schemas/word-detail.schema.json) adalah **schema otoritatif** untuk file `word-details/*.json` (JSON Schema draft 2020-12) — mencakup `authenticated`, `etimologi`, `jenis`, dan `idiom_dan_makna`. File `schema.json` di root bersifat **legacy** (dari upstream) dan tidak dipakai untuk validasi.
 
 ### Cara mengambil definisi sebuah kata
 

@@ -76,7 +76,7 @@
           "definisi": "kota besar yang merupakan pusat kegiatan (perdagangan, pemerintahan, dan sebagainya)",
           "contoh": [
             {
-              "nomor": "1",
+              "nomor": 1,
               "teks": "Jakarta sudah menjadi -- bagi kawasan Asia Tenggara"
             }
           ]
@@ -107,6 +107,7 @@
           "definisi": "Jaringan Area Metropolitan (JAM) adalah jaringan komputer yang menghubungkan beberapa jaringan lokal dalam area metropolitan",
           "contoh": [
             {
+              "nomor": 1,
               "teks": "Jaringan Area Metropolitan (JAM) memungkinkan pengguna untuk berbagi sumber daya dan berkomunikasi dalam area yang luas"
             }
           ]

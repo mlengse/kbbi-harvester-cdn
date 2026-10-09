@@ -23,10 +23,22 @@
           ],
           "definisi": "sudah puas minum; hilang rasa haus",
           "contoh": [
-            "kondisi -- membuat anak lebih tenang",
-            "anak itu sudah -- setelah minum susu",
-            "abis minum es teh manis, gue udah --",
-            "bayi yang -- biasanya tidur lebih nyenyak"
+            {
+              "nomor": 1,
+              "teks": "kondisi -- membuat anak lebih tenang"
+            },
+            {
+              "nomor": 2,
+              "teks": "anak itu sudah -- setelah minum susu"
+            },
+            {
+              "nomor": 3,
+              "teks": "abis minum es teh manis, gue udah --"
+            },
+            {
+              "nomor": 4,
+              "teks": "bayi yang -- biasanya tidur lebih nyenyak"
+            }
           ]
         }
       ],

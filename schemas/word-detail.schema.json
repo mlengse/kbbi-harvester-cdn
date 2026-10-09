@@ -51,6 +51,20 @@
         },
         "terkait": {
           "$ref": "#/$defs/Terkait"
+        },
+        "etimologi": {
+          "type": "object",
+          "description": "Entry-level etymology note",
+          "properties": {
+            "text": { "type": "string" },
+            "languages": { "type": "array", "items": { "type": "string" } }
+          },
+          "required": ["text", "languages"],
+          "additionalProperties": false
+        },
+        "jenis": {
+          "type": "string",
+          "description": "Entry kind (e.g. 'peribahasa', 'idiom')"
         }
       },
       "additionalProperties": false
@@ -151,6 +165,19 @@
               "peribahasa": { "type": "string" },
               "makna": { "type": "string" }
             }
+          }
+        },
+        "idiom_dan_makna": {
+          "type": "array",
+          "description": "Idioms with meanings (optional, not present in all entries)",
+          "items": {
+            "type": "object",
+            "required": ["idiom", "makna"],
+            "properties": {
+              "idiom": { "type": "string" },
+              "makna": { "type": "string" }
+            },
+            "additionalProperties": false
           }
         }
       },

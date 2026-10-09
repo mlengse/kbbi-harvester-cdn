@@ -50,6 +50,7 @@
           "definisi": "berbicara dengan menggunakan isyarat; tidak menggunakan perkataan",
           "contoh": [
             {
+              "nomor": 1,
               "teks": "dia hanya diam seribu basa memberikan jawaban"
             }
           ]
@@ -80,6 +81,7 @@
           "definisi": "mengisyaratkan sesuatu tanpa mengucapkan kata-kata",
           "contoh": [
             {
+              "nomor": 1,
               "teks": "Ia -- ketika diminta tolong"
             }
           ]
@@ -110,6 +112,7 @@
           "definisi": "tidak menjawab secara langsung, tapi dengan isyarat",
           "contoh": [
             {
+              "nomor": 1,
               "teks": "Ia memilih -- daripada menjawab secara terus terang"
             }
           ]
