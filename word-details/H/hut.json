@@ -73,6 +73,33 @@
         "peribahasa": [],
         "idiom": []
       }
+    },
+    {
+      "id": "2",
+      "nama": "pon.dok",
+      "nomor": "2",
+      "makna": [
+        {
+          "nomor": "1",
+          "kelasKata": [
+            {
+              "kode": "n",
+              "nama": "Nomina",
+              "tipe": "kelas_kata"
+            }
+          ],
+          "definisi": "penginapan (biasanya untuk peziarah)",
+          "contoh": []
+        }
+      ],
+      "rootWord": "pondokpondok",
+      "terkait": {
+        "kataTurunan": [],
+        "gabunganKata": [],
+        "peribahasa": [],
+        "idiom": []
+      }
     }
-  ]
+  ],
+  "_merged_abbreviations": true
 }

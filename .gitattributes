@@ -1,0 +1,8 @@
+# Windows compatibility
+# Enable long paths support for Windows (paths > 260 chars)
+* text=auto
+
+# Ensure LF line endings for cross-platform consistency
+*.json text eol=lf
+*.txt text eol=lf
+*.md text eol=lf

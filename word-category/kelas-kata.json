@@ -20,13 +20,13 @@
     },
     {
       "kode": "akr",
-      "nama": "akronim",
+      "nama": "Akronim",
       "description": "Akronim",
       "full_description": "Akronim adalah bentuk penyingkatan yang dibuat dengan mengambil huruf-huruf awal dari setiap kata dalam suatu frasa atau nama, kemudian diucapkan sebagai satu kata utuh. Berbeda dengan singkatan yang dieja huruf per huruf, akronim dibaca sebagai kata biasa dan sering kali menjadi bagian dari kosakata umum bahasa Indonesia."
     },
     {
       "kode": "ark",
-      "nama": "arkais",
+      "nama": "Arkais",
       "description": "Kata yang sudah tidak digunakan lagi",
       "full_description": "Arkais adalah penanda untuk kata-kata yang sudah usang atau tidak lagi digunakan dalam bahasa Indonesia modern, tetapi masih tercatat dalam kamus untuk keperluan penelitian sejarah bahasa dan pemahaman teks-teks lama. Kata-kata arkais sering ditemukan dalam karya sastra klasik, naskah kuno, atau dokumen bersejarah."
     },
@@ -44,19 +44,19 @@
     },
     {
       "kode": "dl",
-      "nama": "dan lain-lain",
+      "nama": "Dan Lain-Lain",
       "description": "Dan lain-lain",
       "full_description": "Dan lain-lain adalah singkatan yang digunakan untuk menunjukkan bahwa masih ada item-item lain yang serupa atau sejenis yang tidak disebutkan secara eksplisit. Penggunaan ini membantu menghemat ruang dan waktu dalam penulisan sambil tetap mengindikasikan adanya kelengkapan yang lebih besar dari daftar yang disebutkan."
     },
     {
       "kode": "dsb",
-      "nama": "dan sebagainya",
+      "nama": "Dan Sebagainya",
       "description": "Dan sebagainya",
       "full_description": "Dan sebagainya adalah ungkapan yang digunakan untuk menunjukkan bahwa daftar atau penjelasan yang diberikan belum lengkap dan masih ada hal-hal lain yang serupa yang tidak disebutkan. Penggunaan ini umum dalam penulisan akademik dan formal untuk mengindikasikan kontinuitas atau kelengkapan yang lebih luas."
     },
     {
       "kode": "hormat",
-      "nama": "hormat",
+      "nama": "Hormat",
       "description": "Kata yang menunjukkan penghormatan",
       "full_description": "Hormat adalah penanda yang menunjukkan bahwa kata atau ungkapan tersebut digunakan dalam konteks yang menunjukkan rasa hormat, sopan santun, atau keformalan terhadap lawan bicara. Penggunaan kata-kata bermarkah hormat mencerminkan sistem kesopanan dalam bahasa Indonesia yang mempertimbangkan hierarki sosial dan situasi komunikasi."
     },
@@ -92,7 +92,7 @@
     },
     {
       "kode": "kp",
-      "nama": "kependekan",
+      "nama": "Kependekan",
       "description": "Bentuk pendek dari kata atau frasa",
       "full_description": "Kependekan adalah bentuk singkat yang dibuat dari kata atau frasa yang lebih panjang untuk efisiensi komunikasi. Berbeda dengan akronim yang dibaca sebagai kata, kependekan bisa berupa pemotongan bagian kata, pengambilan suku kata tertentu, atau kombinasi huruf yang tetap mengacu pada bentuk aslinya."
     },
@@ -128,13 +128,13 @@
     },
     {
       "kode": "semisal",
-      "nama": "semisal",
+      "nama": "Semisal",
       "description": "Contoh atau seumpama",
       "full_description": "Semisal adalah penanda yang menunjukkan bahwa kata atau ungkapan yang diberikan merupakan contoh atau ilustrasi dari konsep yang lebih umum. Penggunaan ini membantu memberikan klarifikasi atau konkretisasi dari definisi abstrak melalui pemberian contoh yang dapat dipahami dengan mudah oleh pembaca."
     },
     {
       "kode": "sing",
-      "nama": "singkatan",
+      "nama": "Singkatan",
       "description": "Singkatan",
       "full_description": "Singkatan adalah bentuk pendek dari kata atau frasa yang dibuat dengan mengambil huruf-huruf tertentu dan biasanya dieja huruf per huruf ketika diucapkan. Singkatan berbeda dari akronim karena tidak dibaca sebagai kata utuh, melainkan dieja secara terpisah untuk setiap hurufnya, seperti dalam organisasi atau istilah teknis."
     },

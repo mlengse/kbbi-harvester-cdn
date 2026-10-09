@@ -127,8 +127,13 @@
           "tebu setuntung masuk geraham gajah",
           "terdorong gajah karena besarnya"
         ],
+<<<<<<< HEAD
         "idiom": [
           {
+=======
+        "idiom": [],
+        "peribahasa_dan_makna": [{
+>>>>>>> 5019a463795b80712859bc0545cef6206e0a4642
             "peribahasa": "adat gajah terdorong",
             "makna": "Peribahasa ini menggambarkan bahwa seseorang yang memiliki kedudukan tinggi, kekuasaan, atau kekayaan cenderung akan bertindak sesuai dengan statusnya, bahkan jika itu berarti melakukan hal-hal yang besar atau berani. Ini adalah cerminan dari pengaruh status terhadap perilaku."
           },

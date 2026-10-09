@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/mlengse/kbbi-harvester-cdn/schemas/word-detail.schema.json",
+  "title": "KBBI Word Detail",
+  "description": "Schema for individual KBBI dictionary entry files in word-details/",
+  "type": "object",
+  "required": ["word", "authenticated", "entries"],
+  "properties": {
+    "word": {
+      "type": "string",
+      "description": "The queried word"
+    },
+    "authenticated": {
+      "type": "boolean",
+      "description": "Whether the data is authenticated"
+    },
+    "entries": {
+      "type": "array",
+      "description": "Dictionary entries for the word (multiple entries for homographs)",
+      "items": {
+        "$ref": "#/$defs/Entry"
+      }
+    }
+  },
+  "$defs": {
+    "Entry": {
+      "type": "object",
+      "required": ["id", "nama", "nomor", "makna", "terkait"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "KBBI entry ID"
+        },
+        "nama": {
+          "type": "string",
+          "description": "Syllabified form (e.g. 'pin.tar', 'mem.ban.tu')"
+        },
+        "nomor": {
+          "type": "string",
+          "description": "Entry number for homographs (can be empty string)"
+        },
+        "rootWord": {
+          "type": "string",
+          "description": "Root/base word (only present for derived/inflected forms)"
+        },
+        "makna": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Makna"
+          }
+        },
+        "terkait": {
+          "$ref": "#/$defs/Terkait"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Makna": {
+      "type": "object",
+      "required": ["nomor", "kelasKata", "definisi", "contoh"],
+      "properties": {
+        "nomor": {
+          "type": "string",
+          "description": "Meaning number within the entry"
+        },
+        "kelasKata": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/KelasKata"
+          }
+        },
+        "definisi": {
+          "type": "string",
+          "description": "Definition text"
+        },
+        "contoh": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Contoh"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "KelasKata": {
+      "type": "object",
+      "required": ["kode", "nama", "tipe"],
+      "properties": {
+        "kode": {
+          "type": "string",
+          "description": "Category code (e.g. 'n', 'v', 'a', 'Kim', 'Jw')"
+        },
+        "nama": {
+          "type": "string",
+          "description": "Full category name"
+        },
+        "tipe": {
+          "type": "string",
+          "enum": ["kelas_kata", "bahasa", "bidang_subjek", "lainnya"],
+          "description": "Category type"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Contoh": {
+      "type": "object",
+      "required": ["nomor", "teks"],
+      "properties": {
+        "nomor": {
+          "type": "integer",
+          "description": "Example number"
+        },
+        "teks": {
+          "type": "string",
+          "description": "Example sentence (-- or ~ mark the headword position)"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Terkait": {
+      "type": "object",
+      "required": ["kataTurunan", "gabunganKata", "peribahasa", "idiom"],
+      "properties": {
+        "kataTurunan": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Derived words"
+        },
+        "gabunganKata": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Compound words"
+        },
+        "peribahasa": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Proverbs containing this word"
+        },
+        "idiom": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Idioms containing this word"
+        },
+        "peribahasa_dan_makna": {
+          "type": "array",
+          "description": "Proverbs with meanings (optional, not present in all entries)",
+          "items": {
+            "type": "object",
+            "required": ["peribahasa", "makna"],
+            "properties": {
+              "peribahasa": { "type": "string" },
+              "makna": { "type": "string" }
+            }
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

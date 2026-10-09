@@ -58,6 +58,131 @@
         "peribahasa": [],
         "idiom": []
       }
+    },
+    {
+      "id": "1",
+      "nama": "rad",
+      "nomor": "1",
+      "makna": [
+        {
+          "nomor": "1",
+          "kelasKata": [
+            {
+              "kode": "n",
+              "nama": "Nomina",
+              "tipe": "kelas_kata"
+            }
+          ],
+          "definisi": "satuan dosis serapan radiasi yang setara dengan energi yang diserap satu gram jaringan hidup yang menerima radiasi sebesar 100 erg",
+          "contoh": []
+        }
+      ],
+      "rootWord": "radrad",
+      "terkait": {
+        "kataTurunan": [],
+        "gabunganKata": [],
+        "peribahasa": [],
+        "idiom": []
+      }
+    },
+    {
+      "id": "2",
+      "nama": "rad",
+      "nomor": "2",
+      "makna": [
+        {
+          "nomor": "1",
+          "kelasKata": [
+            {
+              "kode": "n",
+              "nama": "Nomina",
+              "tipe": "kelas_kata"
+            }
+          ],
+          "definisi": "singkatan dari radian; satuan ukuran sudut",
+          "contoh": []
+        }
+      ],
+      "rootWord": "radrad",
+      "terkait": {
+        "kataTurunan": [],
+        "gabunganKata": [],
+        "peribahasa": [],
+        "idiom": []
+      }
+    },
+    {
+      "id": "3",
+      "nama": "rad",
+      "nomor": "",
+      "makna": [
+        {
+          "nomor": "1",
+          "kelasKata": [
+            {
+              "kode": "n",
+              "nama": "Nomina",
+              "tipe": "kelas_kata"
+            },
+            {
+              "kode": "akr",
+              "nama": "Akronim",
+              "tipe": "kelas_kata"
+            }
+          ],
+          "definisi": "akronim dari rencana anggaran dan dana",
+          "contoh": [
+            {
+              "nomor": 1,
+              "teks": "anggaran negara"
+            }
+          ]
+        }
+      ],
+      "rootWord": "radrad",
+      "terkait": {
+        "kataTurunan": [],
+        "gabunganKata": [],
+        "peribahasa": [],
+        "idiom": []
+      }
+    },
+    {
+      "id": "4",
+      "nama": "rad",
+      "nomor": "",
+      "makna": [
+        {
+          "nomor": "1",
+          "kelasKata": [
+            {
+              "kode": "n",
+              "nama": "Nomina",
+              "tipe": "kelas_kata"
+            },
+            {
+              "kode": "akr",
+              "nama": "Akronim",
+              "tipe": "kelas_kata"
+            }
+          ],
+          "definisi": "akronim dari rencana anggaran dan belanja daerah",
+          "contoh": [
+            {
+              "nomor": 1,
+              "teks": "pemerintah provinsi"
+            }
+          ]
+        }
+      ],
+      "rootWord": "radrad",
+      "terkait": {
+        "kataTurunan": [],
+        "gabunganKata": [],
+        "peribahasa": [],
+        "idiom": []
+      }
     }
-  ]
+  ],
+  "_merged_abbreviations": true
 }

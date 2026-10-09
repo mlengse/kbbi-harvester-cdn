@@ -1,0 +1,19 @@
+<<<<<<< HEAD
+=======
+**.py
+**.sh
+
+# Node.js / TypeScript
+node_modules/
+build/
+dist/
+*.js.map
+*.d.ts.map
+
+.idea/
+.vscode/
+
+# OS junk
+.DS_Store
+**/.DS_Store
+>>>>>>> 5019a463795b80712859bc0545cef6206e0a4642

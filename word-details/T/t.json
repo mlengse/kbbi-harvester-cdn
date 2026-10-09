@@ -51,6 +51,37 @@
         "peribahasa": [],
         "idiom": []
       }
+    },
+    {
+      "id": "96436",
+      "nama": "T.",
+      "nomor": "",
+      "makna": [
+        {
+          "nomor": "1",
+          "kelasKata": [
+            {
+              "kode": "n",
+              "nama": "Nomina",
+              "tipe": "kelas_kata"
+            },
+            {
+              "kode": "sing",
+              "nama": "singkatan",
+              "tipe": "kelas_kata"
+            }
+          ],
+          "definisi": "teuku",
+          "contoh": []
+        }
+      ],
+      "terkait": {
+        "kataTurunan": [],
+        "gabunganKata": [],
+        "peribahasa": [],
+        "idiom": []
+      }
     }
-  ]
+  ],
+  "_merged_abbreviations": true
 }

@@ -2,7 +2,7 @@
   "meta": {
     "description": "KBBI Language and Regional Classifications",
     "extracted_from": "KBBI Harvester Database",
-    "total_languages": 150,
+    "total_languages": 16,
     "last_updated": "2025-08-06"
   },
   "languages": [

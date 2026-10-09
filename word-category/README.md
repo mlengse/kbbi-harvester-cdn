@@ -56,23 +56,23 @@ Additional categories not covered by main files:
 ### CDN Access
 ```javascript
 // Get all categories
-const categories = await fetch('https://cdn.jsdelivr.net/gh/Naandalist/kbbi-harvester@main/word-category/kategori.json')
+const categories = await fetch('https://cdn.jsdelivr.net/gh/mlengse/kbbi-harvester-cdn@main/word-category/kategori.json')
   .then(r => r.json());
 
 // Get only word classes
-const wordClasses = await fetch('https://cdn.jsdelivr.net/gh/Naandalist/kbbi-harvester@main/word-category/kelas-kata.json')
+const wordClasses = await fetch('https://cdn.jsdelivr.net/gh/mlengse/kbbi-harvester-cdn@main/word-category/kelas-kata.json')
   .then(r => r.json());
 
 // Get language classifications  
-const languages = await fetch('https://cdn.jsdelivr.net/gh/Naandalist/kbbi-harvester@main/word-category/bahasa.json')
+const languages = await fetch('https://cdn.jsdelivr.net/gh/mlengse/kbbi-harvester-cdn@main/word-category/bahasa.json')
   .then(r => r.json());
 
 // Get subject domains
-const subjects = await fetch('https://cdn.jsdelivr.net/gh/Naandalist/kbbi-harvester@main/word-category/bidang-subjek.json')
+const subjects = await fetch('https://cdn.jsdelivr.net/gh/mlengse/kbbi-harvester-cdn@main/word-category/bidang-subjek.json')
   .then(r => r.json());
 
 // Get miscellaneous categories
-const misc = await fetch('https://cdn.jsdelivr.net/gh/Naandalist/kbbi-harvester@main/word-category/lainnya.json')
+const misc = await fetch('https://cdn.jsdelivr.net/gh/mlengse/kbbi-harvester-cdn@main/word-category/lainnya.json')
   .then(r => r.json());
 ```
 

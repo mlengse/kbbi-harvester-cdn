@@ -161,6 +161,37 @@
         "peribahasa": [],
         "idiom": []
       }
+    },
+    {
+      "id": "96450",
+      "nama": "Tb.",
+      "nomor": "",
+      "makna": [
+        {
+          "nomor": "1",
+          "kelasKata": [
+            {
+              "kode": "n",
+              "nama": "Nomina",
+              "tipe": "kelas_kata"
+            },
+            {
+              "kode": "sing",
+              "nama": "singkatan",
+              "tipe": "kelas_kata"
+            }
+          ],
+          "definisi": "Tubagus",
+          "contoh": []
+        }
+      ],
+      "terkait": {
+        "kataTurunan": [],
+        "gabunganKata": [],
+        "peribahasa": [],
+        "idiom": []
+      }
     }
-  ]
+  ],
+  "_merged_abbreviations": true
 }

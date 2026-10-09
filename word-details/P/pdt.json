@@ -31,6 +31,37 @@
         "peribahasa": [],
         "idiom": []
       }
+    },
+    {
+      "id": "96185",
+      "nama": "Pdt.",
+      "nomor": "",
+      "makna": [
+        {
+          "nomor": "1",
+          "kelasKata": [
+            {
+              "kode": "n",
+              "nama": "Nomina",
+              "tipe": "kelas_kata"
+            },
+            {
+              "kode": "sing",
+              "nama": "singkatan",
+              "tipe": "kelas_kata"
+            }
+          ],
+          "definisi": "Pendeta",
+          "contoh": []
+        }
+      ],
+      "terkait": {
+        "kataTurunan": [],
+        "gabunganKata": [],
+        "peribahasa": [],
+        "idiom": []
+      }
     }
-  ]
+  ],
+  "_merged_abbreviations": true
 }

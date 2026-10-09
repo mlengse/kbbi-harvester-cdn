@@ -187,6 +187,131 @@
         "peribahasa": [],
         "idiom": []
       }
+    },
+    {
+      "id": "1",
+      "nama": "log",
+      "nomor": "1",
+      "makna": [
+        {
+          "nomor": "1",
+          "kelasKata": [
+            {
+              "kode": "n",
+              "nama": "Nomina",
+              "tipe": "kelas_kata"
+            }
+          ],
+          "definisi": "catatan harian",
+          "contoh": [
+            {
+              "nomor": 1,
+              "teks": "dia menyimpan log perjalanannya selama beberapa tahun"
+            }
+          ]
+        }
+      ],
+      "rootWord": "loglog",
+      "terkait": {
+        "kataTurunan": [],
+        "gabunganKata": [],
+        "peribahasa": [],
+        "idiom": []
+      }
+    },
+    {
+      "id": "2",
+      "nama": "log",
+      "nomor": "2",
+      "makna": [
+        {
+          "nomor": "1",
+          "kelasKata": [
+            {
+              "kode": "n",
+              "nama": "Nomina",
+              "tipe": "kelas_kata"
+            }
+          ],
+          "definisi": "buku catatan",
+          "contoh": [
+            {
+              "nomor": 1,
+              "teks": "selalu ada log di meja resepsionis untuk tamu yang berkunjung"
+            }
+          ]
+        }
+      ],
+      "rootWord": "loglog",
+      "terkait": {
+        "kataTurunan": [],
+        "gabunganKata": [],
+        "peribahasa": [],
+        "idiom": []
+      }
+    },
+    {
+      "id": "3",
+      "nama": "log",
+      "nomor": "3",
+      "makna": [
+        {
+          "nomor": "1",
+          "kelasKata": [
+            {
+              "kode": "v",
+              "nama": "Verba",
+              "tipe": "kelas_kata"
+            }
+          ],
+          "definisi": "mencatat di log",
+          "contoh": [
+            {
+              "nomor": 1,
+              "teks": "dia log semua percakapan di media sosial"
+            }
+          ]
+        }
+      ],
+      "rootWord": "loglog",
+      "terkait": {
+        "kataTurunan": [],
+        "gabunganKata": [],
+        "peribahasa": [],
+        "idiom": []
+      }
+    },
+    {
+      "id": "4",
+      "nama": "log",
+      "nomor": "4",
+      "makna": [
+        {
+          "nomor": "1",
+          "kelasKata": [
+            {
+              "kode": "n",
+              "nama": "Nomina",
+              "tipe": "kelas_kata"
+            }
+          ],
+          "definisi": "logaritma",
+          "contoh": [
+            {
+              "nomor": 1,
+              "teks": "ia menggunakan log untuk memecahkan soal matematika"
+            }
+          ]
+        }
+      ],
+      "rootWord": "loglog",
+      "terkait": {
+        "kataTurunan": [],
+        "gabunganKata": [],
+        "peribahasa": [],
+        "idiom": []
+      }
     }
-  ]
+  ],
+  "_merged_abbreviations": true
 }
