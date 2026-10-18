@@ -1,0 +1,3 @@
+## 2026-03-31 - Targeted Lookups vs Directory Iteration in Large Datasets
+**Learning:** When generating mapping files (e.g. `lexicon/derived_to_root_with_kelas.json`) based on a known list of keys (`derived_to_root.json` with 33K entries) from a huge dataset (`word-details/` containing 112K+ JSON files), iterating over all 112K+ files in the directory tree incurs massive disk I/O overhead. Doing targeted candidate file path lookups for only the keys of interest reduces files checked from ~112.5K to ~27K, executing ~8x faster (~6.4s down to ~0.8s).
+**Action:** Always check if processing can be key-driven with targeted file lookups instead of full dataset scans when operating on large static file structures.
