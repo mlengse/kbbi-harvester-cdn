@@ -19,7 +19,7 @@ for path in SMOKE_FILES:
     try:
         with open(path, "r", encoding="utf-8") as fh:
             data = json.load(fh)
-        missing = REQUIRED_FIELDS - set(data.keys())
+        missing = REQUIRED_FIELDS - data.keys()
         if missing:
             errors.append(f"{path}: missing fields {missing}")
         if not isinstance(data.get("entries"), list) or len(data["entries"]) == 0:
