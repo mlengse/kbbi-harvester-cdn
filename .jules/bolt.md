@@ -5,3 +5,7 @@
 ## 2026-04-18 - Chunked ProcessPoolExecutor for Mass File Parsing
 **Learning:** Validating or processing 112K+ small files sequentially in Python causes high CPU/I/O wait times (~8.8s). Using `ThreadPoolExecutor` fails due to CPython GIL contention (~34s+). Using `ProcessPoolExecutor` with path chunking avoids inter-process communication (IPC) overhead for every file, dropping execution time from ~8.8s to ~1.8s (~78% faster / ~4.8x speedup).
 **Action:** When performing batch CPU-bound operations (like JSON parsing) over tens of thousands of items in Python, use `ProcessPoolExecutor` with multi-item chunking rather than item-by-item worker tasks or threads.
+
+## 2026-04-19 - Testing Pure Utility Functions via CommonJS Export Conditional
+**Learning:** Pure utility functions embedded in Node.js CLI scripts can be tested cleanly without running CLI side effects by checking `require.main === module` before executing main and exporting the utility functions.
+**Action:** Use `if (require.main === module)` to wrap CLI invocations in CommonJS scripts to enable clean unit testing of exported helper functions.
