@@ -2,6 +2,7 @@ import json
 import os
 import sys
 from pathlib import Path
+from unittest.mock import mock_open, patch
 
 import pytest
 
@@ -61,6 +62,42 @@ def test_validate_chunk_mixed_files(tmp_path):
     assert count == 1
     assert len(errors) == 1
     assert errors[0][0] == str(invalid_file)
+
+
+def test_validate_chunk_open_exception(tmp_path):
+    file_path = tmp_path / "test.json"
+    file_path.write_text("{}", encoding="utf-8")
+
+    paths = [str(file_path)]
+
+    def mock_open_raise(*args, **kwargs):
+        raise OSError("Permission denied")
+
+    with patch("builtins.open", side_effect=mock_open_raise):
+        count, errors = validate_json.validate_chunk(paths)
+
+    assert count == 0
+    assert len(errors) == 1
+    assert errors[0][0] == str(file_path)
+    assert "Permission denied" in errors[0][1]
+
+
+def test_validate_chunk_read_exception(tmp_path):
+    file_path = tmp_path / "test.json"
+    file_path.write_text("{}", encoding="utf-8")
+
+    paths = [str(file_path)]
+
+    m = mock_open()
+    m.return_value.read.side_effect = OSError("Read error")
+
+    with patch("builtins.open", m):
+        count, errors = validate_json.validate_chunk(paths)
+
+    assert count == 0
+    assert len(errors) == 1
+    assert errors[0][0] == str(file_path)
+    assert "Read error" in errors[0][1]
 
 
 def test_main_success_single_process(tmp_path, monkeypatch, capsys):
