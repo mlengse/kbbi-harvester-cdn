@@ -92,4 +92,12 @@ function main() {
   console.log(`output                  : ${OUTPUT_FILE}`);
 }
 
-main();
+if (require.main === module) {
+  main();
+}
+
+module.exports = {
+  collectKelasKata,
+  getFilePath,
+  loadJson
+};
