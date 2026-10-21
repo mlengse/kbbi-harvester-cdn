@@ -201,3 +201,34 @@ test("loadJson - throws error when reading non-existent file", () => {
     loadJson("non_existent_file.json");
   });
 });
+
+
+test("getFilePath - path traversal prevention: returns null for invalid or malicious key inputs", (t) => {
+  const calls = [];
+  t.mock.method(fs, "existsSync", (p) => {
+    calls.push(p);
+    return true;
+  });
+
+  const maliciousKeys = [
+    "A/../../etc/passwd",
+    "A/../secret",
+    "A\\..\\secret",
+    "A/sub/path",
+    "A\\sub\\path",
+    "A\0B",
+    "../A",
+    "..\\A",
+    null,
+    undefined,
+    123,
+    {}
+  ];
+
+  for (const key of maliciousKeys) {
+    assert.equal(getFilePath(key), null);
+  }
+
+  // Ensure fs.existsSync was never invoked for any malicious keys
+  assert.equal(calls.length, 0);
+});
