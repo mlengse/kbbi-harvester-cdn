@@ -20,7 +20,7 @@ def validate_chunk(paths):
             with open(path, "rb") as fh:
                 json.loads(fh.read())
             count += 1
-        except Exception as e:
+        except (json.JSONDecodeError, OSError) as e:
             errors.append((path, str(e)))
     return count, errors
 
