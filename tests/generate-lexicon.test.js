@@ -1,6 +1,7 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
-const { collectKelasKata } = require("../scripts/generate-lexicon.cjs");
+const path = require("node:path");
+const { collectKelasKata, getFilePath, loadJson } = require("../scripts/generate-lexicon.cjs");
 
 test("collectKelasKata - extracts kelas_kata codes from entries with rootWord", () => {
   const detail = {
@@ -104,4 +105,36 @@ test("collectKelasKata - handles empty or invalid detail objects gracefully", ()
     }),
     []
   );
+});
+
+
+test("getFilePath - resolves valid word details file paths", () => {
+  const filePath = getFilePath("pintar");
+  assert.ok(filePath);
+  assert.ok(filePath.endsWith(path.join("word-details", "P", "pintar.json")));
+});
+
+test("getFilePath - resolves files with spaces or lowercased keys", () => {
+  const filePath = getFilePath("jarak zenit");
+  assert.ok(filePath);
+  assert.ok(filePath.includes(path.join("word-details", "J")));
+});
+
+test("getFilePath - returns null for non-existent files or invalid keys", () => {
+  assert.equal(getFilePath("nonexistentword12345"), null);
+  assert.equal(getFilePath("123invalid"), null);
+  assert.equal(getFilePath(""), null);
+});
+
+test("loadJson - loads and parses JSON file correctly", () => {
+  const jsonPath = path.join(__dirname, "..", "lexicon", "derived_to_root.json");
+  const data = loadJson(jsonPath);
+  assert.equal(typeof data, "object");
+  assert.ok(data !== null);
+});
+
+test("loadJson - throws error when reading non-existent file", () => {
+  assert.throws(() => {
+    loadJson("non_existent_file.json");
+  });
 });
