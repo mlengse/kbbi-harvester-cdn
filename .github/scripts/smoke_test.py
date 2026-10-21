@@ -27,7 +27,7 @@ def main():
                 errors.append(f"{path}: missing fields {missing}")
             if not isinstance(data.get("entries"), list) or len(data["entries"]) == 0:
                 errors.append(f"{path}: 'entries' is empty or not a list")
-        except Exception as e:
+        except (json.JSONDecodeError, OSError) as e:
             errors.append(f"{path}: {e}")
 
     if errors:
