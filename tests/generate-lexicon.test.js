@@ -1,6 +1,7 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
 const path = require("node:path");
+const fs = require("node:fs");
 const { collectKelasKata, getFilePath, loadJson } = require("../scripts/generate-lexicon.cjs");
 
 test("collectKelasKata - extracts kelas_kata codes from entries with rootWord", () => {
@@ -107,23 +108,85 @@ test("collectKelasKata - handles empty or invalid detail objects gracefully", ()
   );
 });
 
+test("getFilePath - edge cases: invalid first character returns null immediately", (t) => {
+  const calls = [];
+  t.mock.method(fs, "existsSync", (p) => {
+    calls.push(p);
+    return true;
+  });
 
-test("getFilePath - resolves valid word details file paths", () => {
+  const invalidKeys = ["", "123word", "!special", "   space", "—dash", "éxample"];
+  for (const key of invalidKeys) {
+    assert.equal(getFilePath(key), null);
+  }
+  // Should not even call fs.existsSync since first character regex /^[A-Z]$/ fails
+  assert.equal(calls.length, 0);
+});
+
+test("getFilePath - matches candidate 1: ${key}.json", (t) => {
+  t.mock.method(fs, "existsSync", (p) => {
+    return p.endsWith(path.join("A", "Abc Def.json"));
+  });
+
+  const filePath = getFilePath("Abc Def");
+  assert.ok(filePath);
+  assert.ok(filePath.endsWith(path.join("word-details", "A", "Abc Def.json")));
+});
+
+test("getFilePath - matches candidate 2: ${key.replace(/ /g, '%20')}.json", (t) => {
+  t.mock.method(fs, "existsSync", (p) => {
+    return p.endsWith(path.join("A", "Abc%20Def.json"));
+  });
+
+  const filePath = getFilePath("Abc Def");
+  assert.ok(filePath);
+  assert.ok(filePath.endsWith(path.join("word-details", "A", "Abc%20Def.json")));
+});
+
+test("getFilePath - matches candidate 3: ${keyLower}.json", (t) => {
+  t.mock.method(fs, "existsSync", (p) => {
+    return p.endsWith(path.join("A", "abc def.json"));
+  });
+
+  const filePath = getFilePath("Abc Def");
+  assert.ok(filePath);
+  assert.ok(filePath.endsWith(path.join("word-details", "A", "abc def.json")));
+});
+
+test("getFilePath - matches candidate 4: ${keyLower.replace(/ /g, '%20')}.json", (t) => {
+  t.mock.method(fs, "existsSync", (p) => {
+    return p.endsWith(path.join("A", "abc%20def.json"));
+  });
+
+  const filePath = getFilePath("Abc Def");
+  assert.ok(filePath);
+  assert.ok(filePath.endsWith(path.join("word-details", "A", "abc%20def.json")));
+});
+
+test("getFilePath - candidate evaluation priority order and non-existent files", (t) => {
+  const checked = [];
+  t.mock.method(fs, "existsSync", (p) => {
+    checked.push(p);
+    return false;
+  });
+
+  const filePath = getFilePath("Test Key");
+  assert.equal(filePath, null);
+  assert.equal(checked.length, 4);
+  assert.ok(checked[0].endsWith(path.join("T", "Test Key.json")));
+  assert.ok(checked[1].endsWith(path.join("T", "Test%20Key.json")));
+  assert.ok(checked[2].endsWith(path.join("T", "test key.json")));
+  assert.ok(checked[3].endsWith(path.join("T", "test%20key.json")));
+});
+
+test("getFilePath - resolves real files from word-details directory", () => {
   const filePath = getFilePath("pintar");
   assert.ok(filePath);
   assert.ok(filePath.endsWith(path.join("word-details", "P", "pintar.json")));
-});
 
-test("getFilePath - resolves files with spaces or lowercased keys", () => {
-  const filePath = getFilePath("jarak zenit");
-  assert.ok(filePath);
-  assert.ok(filePath.includes(path.join("word-details", "J")));
-});
-
-test("getFilePath - returns null for non-existent files or invalid keys", () => {
-  assert.equal(getFilePath("nonexistentword12345"), null);
-  assert.equal(getFilePath("123invalid"), null);
-  assert.equal(getFilePath(""), null);
+  const spacePath = getFilePath("jarak zenit");
+  assert.ok(spacePath);
+  assert.ok(spacePath.includes(path.join("word-details", "J")));
 });
 
 test("loadJson - loads and parses JSON file correctly", () => {
