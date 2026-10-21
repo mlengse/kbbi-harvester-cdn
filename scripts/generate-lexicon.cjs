@@ -75,8 +75,8 @@ function main() {
         const detail = loadJson(filePath);
         filesRead++;
         out[key].kelasKata = collectKelasKata(detail);
-      } catch {
-        // skip malformed file
+      } catch (err) {
+        console.warn(`Warning: Failed to load or parse ${filePath}:`, err.message);
       }
     }
   }
