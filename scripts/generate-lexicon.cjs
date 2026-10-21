@@ -43,6 +43,11 @@ function collectKelasKata(detail) {
 
 /** Cari path file json yang cocok untuk kata turunan secara spesifik. */
 function getFilePath(key) {
+  if (typeof key !== "string" || !key) return null;
+  if (key.includes("..") || key.includes("/") || key.includes("\\") || key.includes("\0")) {
+    return null;
+  }
+
   const firstLetter = key.charAt(0).toUpperCase();
   if (!/^[A-Z]$/.test(firstLetter)) return null;
 
@@ -54,8 +59,12 @@ function getFilePath(key) {
     path.join(WORD_DETAILS, firstLetter, `${keyLower.replace(/ /g, "%20")}.json`)
   ];
 
+  const allowedPrefix = WORD_DETAILS + path.sep;
+
   for (const p of candidates) {
-    if (fs.existsSync(p)) return p;
+    const resolved = path.resolve(p);
+    if (!resolved.startsWith(allowedPrefix)) continue;
+    if (fs.existsSync(resolved)) return resolved;
   }
   return null;
 }
