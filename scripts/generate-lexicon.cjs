@@ -7,13 +7,13 @@
  * word-details/{A-Z}/*.json — hanya dari entry yang memiliki rootWord.
  *
  * Performance note:
- * Instead of scanning all 112K+ files in word-details/, we perform targeted file
- * lookups for the 33,268 keys present in derived_to_root.json. This speeds up
- * script execution from ~6.4s to ~0.8s (~8x / 87% faster).
+ * Uses asynchronous non-blocking file reading (`fs.promises.readFile`) and chunked
+ * `Promise.all` execution to reduce handle congestion and I/O wait times.
  *
  * Usage: node scripts/generate-lexicon.cjs
  */
 const fs = require("fs");
+const fsPromises = fs.promises;
 const path = require("path");
 
 const ROOT = path.join(__dirname, "..");
@@ -21,8 +21,9 @@ const WORD_DETAILS = path.join(ROOT, "word-details");
 const DERIVED_TO_ROOT_FILE = path.join(ROOT, "lexicon", "derived_to_root.json");
 const OUTPUT_FILE = path.join(ROOT, "lexicon", "derived_to_root_with_kelas.json");
 
-function loadJson(file) {
-  return JSON.parse(fs.readFileSync(file, "utf-8"));
+async function loadJson(file) {
+  const content = await fsPromises.readFile(file, "utf-8");
+  return JSON.parse(content);
 }
 
 /** Kumpulkan kode kelas kata (tipe "kelas_kata") dari entry yang punya rootWord. */
@@ -69,28 +70,34 @@ function getFilePath(key) {
   return null;
 }
 
-function main() {
-  const derivedToRoot = loadJson(DERIVED_TO_ROOT_FILE);
+async function main() {
+  const derivedToRoot = await loadJson(DERIVED_TO_ROOT_FILE);
   const derivedKeys = Object.keys(derivedToRoot);
 
   const out = {};
   let filesRead = 0;
 
-  for (const key of derivedKeys) {
-    out[key] = { kataDasar: derivedToRoot[key], kelasKata: [] };
-    const filePath = getFilePath(key);
-    if (filePath) {
-      try {
-        const detail = loadJson(filePath);
-        filesRead++;
-        out[key].kelasKata = collectKelasKata(detail);
-      } catch (err) {
-        console.error(`Error: Failed to load or parse ${filePath}:`, err.message);
-      }
-    }
+  const CHUNK_SIZE = 1000;
+  for (let i = 0; i < derivedKeys.length; i += CHUNK_SIZE) {
+    const chunk = derivedKeys.slice(i, i + CHUNK_SIZE);
+    await Promise.all(
+      chunk.map(async (key) => {
+        out[key] = { kataDasar: derivedToRoot[key], kelasKata: [] };
+        const filePath = getFilePath(key);
+        if (filePath) {
+          try {
+            const detail = await loadJson(filePath);
+            filesRead++;
+            out[key].kelasKata = collectKelasKata(detail);
+          } catch (err) {
+            console.error(`Error: Failed to load or parse ${filePath}:`, err.message);
+          }
+        }
+      })
+    );
   }
 
-  fs.writeFileSync(OUTPUT_FILE, JSON.stringify(out, null, 2) + "\n", "utf-8");
+  await fsPromises.writeFile(OUTPUT_FILE, JSON.stringify(out, null, 2) + "\n", "utf-8");
 
   const empty = derivedKeys.filter((k) => out[k].kelasKata.length === 0).length;
   const withKelas = derivedKeys.length - empty;

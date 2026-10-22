@@ -2,6 +2,7 @@ const test = require("node:test");
 const assert = require("node:assert/strict");
 const path = require("node:path");
 const fs = require("node:fs");
+const fsPromises = fs.promises;
 const { collectKelasKata, getFilePath, loadJson, main } = require("../scripts/generate-lexicon.cjs");
 
 test("collectKelasKata - extracts kelas_kata codes from entries with rootWord", () => {
@@ -189,19 +190,18 @@ test("getFilePath - resolves real files from word-details directory", () => {
   assert.ok(spacePath.includes(path.join("word-details", "J")));
 });
 
-test("loadJson - loads and parses JSON file correctly", () => {
+test("loadJson - loads and parses JSON file correctly", async () => {
   const jsonPath = path.join(__dirname, "..", "lexicon", "derived_to_root.json");
-  const data = loadJson(jsonPath);
+  const data = await loadJson(jsonPath);
   assert.equal(typeof data, "object");
   assert.ok(data !== null);
 });
 
-test("loadJson - throws error when reading non-existent file", () => {
-  assert.throws(() => {
-    loadJson("non_existent_file.json");
+test("loadJson - rejects promise when reading non-existent file", async () => {
+  await assert.rejects(async () => {
+    await loadJson("non_existent_file.json");
   });
 });
-
 
 test("getFilePath - path traversal prevention: returns null for invalid or malicious key inputs", (t) => {
   const calls = [];
@@ -233,8 +233,7 @@ test("getFilePath - path traversal prevention: returns null for invalid or malic
   assert.equal(calls.length, 0);
 });
 
-
-test("loadJson - logs error to console.error when reading or parsing invalid JSON", (t) => {
+test("loadJson - logs error to console.error when reading or parsing invalid JSON", async (t) => {
   const errorLogs = [];
   t.mock.method(console, "error", (...args) => {
     errorLogs.push(args);
@@ -244,7 +243,7 @@ test("loadJson - logs error to console.error when reading or parsing invalid JSO
   fs.writeFileSync(tempFilePath, "{ invalid json", "utf-8");
 
   try {
-    loadJson(tempFilePath);
+    await loadJson(tempFilePath);
   } catch (err) {
     console.error(`Error: Failed to load or parse ${tempFilePath}:`, err.message);
   } finally {
@@ -257,8 +256,7 @@ test("loadJson - logs error to console.error when reading or parsing invalid JSO
   assert.ok(errorLogs[0][0].includes("Failed to load or parse"));
 });
 
-
-test("main - handles error when loadJson fails for a word-details file", (t) => {
+test("main - handles error when loadJson fails for a word-details file", async (t) => {
   const errorLogs = [];
   const logs = [];
   let writtenData = null;
@@ -270,7 +268,7 @@ test("main - handles error when loadJson fails for a word-details file", (t) => 
     logs.push(args);
   });
 
-  t.mock.method(fs, "writeFileSync", (p, data) => {
+  t.mock.method(fsPromises, "writeFile", async (p, data) => {
     writtenData = JSON.parse(data);
   });
 
@@ -279,7 +277,7 @@ test("main - handles error when loadJson fails for a word-details file", (t) => 
     return false;
   });
 
-  t.mock.method(fs, "readFileSync", (p) => {
+  t.mock.method(fsPromises, "readFile", async (p) => {
     if (p.endsWith("derived_to_root.json")) {
       return JSON.stringify({ makan: "makan" });
     }
@@ -289,7 +287,7 @@ test("main - handles error when loadJson fails for a word-details file", (t) => 
     return "{}";
   });
 
-  main();
+  await main();
 
   assert.equal(errorLogs.length, 1);
   assert.ok(errorLogs[0][0].includes("Failed to load or parse"));
