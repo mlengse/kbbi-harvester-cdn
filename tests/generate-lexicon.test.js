@@ -2,7 +2,7 @@ const test = require("node:test");
 const assert = require("node:assert/strict");
 const path = require("node:path");
 const fs = require("node:fs");
-const { collectKelasKata, getFilePath, loadJson } = require("../scripts/generate-lexicon.cjs");
+const { collectKelasKata, getFilePath, loadJson, main } = require("../scripts/generate-lexicon.cjs");
 
 test("collectKelasKata - extracts kelas_kata codes from entries with rootWord", () => {
   const detail = {
@@ -255,4 +255,50 @@ test("loadJson - logs error to console.error when reading or parsing invalid JSO
 
   assert.equal(errorLogs.length, 1);
   assert.ok(errorLogs[0][0].includes("Failed to load or parse"));
+});
+
+
+test("main - handles error when loadJson fails for a word-details file", (t) => {
+  const errorLogs = [];
+  const logs = [];
+  let writtenData = null;
+
+  t.mock.method(console, "error", (...args) => {
+    errorLogs.push(args);
+  });
+  t.mock.method(console, "log", (...args) => {
+    logs.push(args);
+  });
+
+  t.mock.method(fs, "writeFileSync", (p, data) => {
+    writtenData = JSON.parse(data);
+  });
+
+  t.mock.method(fs, "existsSync", (p) => {
+    if (p.includes("makan.json")) return true;
+    return false;
+  });
+
+  t.mock.method(fs, "readFileSync", (p) => {
+    if (p.endsWith("derived_to_root.json")) {
+      return JSON.stringify({ makan: "makan" });
+    }
+    if (p.includes("makan.json")) {
+      throw new Error("Invalid JSON file");
+    }
+    return "{}";
+  });
+
+  main();
+
+  assert.equal(errorLogs.length, 1);
+  assert.ok(errorLogs[0][0].includes("Failed to load or parse"));
+  assert.equal(errorLogs[0][1], "Invalid JSON file");
+
+  assert.ok(writtenData);
+  assert.deepEqual(writtenData.makan, { kataDasar: "makan", kelasKata: [] });
+
+  const filesReadLog = logs.find((log) => log[0].startsWith("word-details files read"));
+  assert.ok(filesReadLog);
+  assert.ok(filesReadLog[0].endsWith(": 0"));
 });

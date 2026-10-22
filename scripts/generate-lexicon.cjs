@@ -108,5 +108,6 @@ if (require.main === module) {
 module.exports = {
   collectKelasKata,
   getFilePath,
-  loadJson
+  loadJson,
+  main
 };
