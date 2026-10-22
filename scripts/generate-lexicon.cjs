@@ -43,7 +43,7 @@ function collectKelasKata(detail) {
 }
 
 /** Cari path file json yang cocok untuk kata turunan secara spesifik. */
-function getFilePath(key) {
+async function getFilePath(key) {
   if (typeof key !== "string" || !key) return null;
   if (key.includes("..") || key.includes("/") || key.includes("\\") || key.includes("\0")) {
     return null;
@@ -65,7 +65,12 @@ function getFilePath(key) {
   for (const p of candidates) {
     const resolved = path.resolve(p);
     if (!resolved.startsWith(allowedPrefix)) continue;
-    if (fs.existsSync(resolved)) return resolved;
+    try {
+      await fsPromises.access(resolved, fs.constants.F_OK);
+      return resolved;
+    } catch {
+      // File does not exist, continue checking candidates in priority order
+    }
   }
   return null;
 }
@@ -83,7 +88,7 @@ async function main() {
     await Promise.all(
       chunk.map(async (key) => {
         out[key] = { kataDasar: derivedToRoot[key], kelasKata: [] };
-        const filePath = getFilePath(key);
+        const filePath = await getFilePath(key);
         if (filePath) {
           try {
             const detail = await loadJson(filePath);

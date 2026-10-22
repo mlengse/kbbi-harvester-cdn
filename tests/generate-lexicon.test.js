@@ -109,69 +109,72 @@ test("collectKelasKata - handles empty or invalid detail objects gracefully", ()
   );
 });
 
-test("getFilePath - edge cases: invalid first character returns null immediately", (t) => {
+test("getFilePath - edge cases: invalid first character returns null immediately", async (t) => {
   const calls = [];
-  t.mock.method(fs, "existsSync", (p) => {
+  t.mock.method(fsPromises, "access", async (p) => {
     calls.push(p);
-    return true;
   });
 
   const invalidKeys = ["", "123word", "!special", "   space", "—dash", "éxample"];
   for (const key of invalidKeys) {
-    assert.equal(getFilePath(key), null);
+    assert.equal(await getFilePath(key), null);
   }
-  // Should not even call fs.existsSync since first character regex /^[A-Z]$/ fails
+  // Should not even call fsPromises.access since first character regex /^[A-Z]$/ fails
   assert.equal(calls.length, 0);
 });
 
-test("getFilePath - matches candidate 1: ${key}.json", (t) => {
-  t.mock.method(fs, "existsSync", (p) => {
-    return p.endsWith(path.join("A", "Abc Def.json"));
+test("getFilePath - matches candidate 1: ${key}.json", async (t) => {
+  t.mock.method(fsPromises, "access", async (p) => {
+    if (p.endsWith(path.join("A", "Abc Def.json"))) return;
+    throw new Error("ENOENT");
   });
 
-  const filePath = getFilePath("Abc Def");
+  const filePath = await getFilePath("Abc Def");
   assert.ok(filePath);
   assert.ok(filePath.endsWith(path.join("word-details", "A", "Abc Def.json")));
 });
 
-test("getFilePath - matches candidate 2: ${key.replace(/ /g, '%20')}.json", (t) => {
-  t.mock.method(fs, "existsSync", (p) => {
-    return p.endsWith(path.join("A", "Abc%20Def.json"));
+test("getFilePath - matches candidate 2: ${key.replace(/ /g, '%20')}.json", async (t) => {
+  t.mock.method(fsPromises, "access", async (p) => {
+    if (p.endsWith(path.join("A", "Abc%20Def.json"))) return;
+    throw new Error("ENOENT");
   });
 
-  const filePath = getFilePath("Abc Def");
+  const filePath = await getFilePath("Abc Def");
   assert.ok(filePath);
   assert.ok(filePath.endsWith(path.join("word-details", "A", "Abc%20Def.json")));
 });
 
-test("getFilePath - matches candidate 3: ${keyLower}.json", (t) => {
-  t.mock.method(fs, "existsSync", (p) => {
-    return p.endsWith(path.join("A", "abc def.json"));
+test("getFilePath - matches candidate 3: ${keyLower}.json", async (t) => {
+  t.mock.method(fsPromises, "access", async (p) => {
+    if (p.endsWith(path.join("A", "abc def.json"))) return;
+    throw new Error("ENOENT");
   });
 
-  const filePath = getFilePath("Abc Def");
+  const filePath = await getFilePath("Abc Def");
   assert.ok(filePath);
   assert.ok(filePath.endsWith(path.join("word-details", "A", "abc def.json")));
 });
 
-test("getFilePath - matches candidate 4: ${keyLower.replace(/ /g, '%20')}.json", (t) => {
-  t.mock.method(fs, "existsSync", (p) => {
-    return p.endsWith(path.join("A", "abc%20def.json"));
+test("getFilePath - matches candidate 4: ${keyLower.replace(/ /g, '%20')}.json", async (t) => {
+  t.mock.method(fsPromises, "access", async (p) => {
+    if (p.endsWith(path.join("A", "abc%20def.json"))) return;
+    throw new Error("ENOENT");
   });
 
-  const filePath = getFilePath("Abc Def");
+  const filePath = await getFilePath("Abc Def");
   assert.ok(filePath);
   assert.ok(filePath.endsWith(path.join("word-details", "A", "abc%20def.json")));
 });
 
-test("getFilePath - candidate evaluation priority order and non-existent files", (t) => {
+test("getFilePath - candidate evaluation priority order and non-existent files", async (t) => {
   const checked = [];
-  t.mock.method(fs, "existsSync", (p) => {
+  t.mock.method(fsPromises, "access", async (p) => {
     checked.push(p);
-    return false;
+    throw new Error("ENOENT");
   });
 
-  const filePath = getFilePath("Test Key");
+  const filePath = await getFilePath("Test Key");
   assert.equal(filePath, null);
   assert.equal(checked.length, 4);
   assert.ok(checked[0].endsWith(path.join("T", "Test Key.json")));
@@ -180,12 +183,12 @@ test("getFilePath - candidate evaluation priority order and non-existent files",
   assert.ok(checked[3].endsWith(path.join("T", "test%20key.json")));
 });
 
-test("getFilePath - resolves real files from word-details directory", () => {
-  const filePath = getFilePath("pintar");
+test("getFilePath - resolves real files from word-details directory", async () => {
+  const filePath = await getFilePath("pintar");
   assert.ok(filePath);
   assert.ok(filePath.endsWith(path.join("word-details", "P", "pintar.json")));
 
-  const spacePath = getFilePath("jarak zenit");
+  const spacePath = await getFilePath("jarak zenit");
   assert.ok(spacePath);
   assert.ok(spacePath.includes(path.join("word-details", "J")));
 });
@@ -203,11 +206,10 @@ test("loadJson - rejects promise when reading non-existent file", async () => {
   });
 });
 
-test("getFilePath - path traversal prevention: returns null for invalid or malicious key inputs", (t) => {
+test("getFilePath - path traversal prevention: returns null for invalid or malicious key inputs", async (t) => {
   const calls = [];
-  t.mock.method(fs, "existsSync", (p) => {
+  t.mock.method(fsPromises, "access", async (p) => {
     calls.push(p);
-    return true;
   });
 
   const maliciousKeys = [
@@ -226,10 +228,10 @@ test("getFilePath - path traversal prevention: returns null for invalid or malic
   ];
 
   for (const key of maliciousKeys) {
-    assert.equal(getFilePath(key), null);
+    assert.equal(await getFilePath(key), null);
   }
 
-  // Ensure fs.existsSync was never invoked for any malicious keys
+  // Ensure fsPromises.access was never invoked for any malicious keys
   assert.equal(calls.length, 0);
 });
 
@@ -272,9 +274,9 @@ test("main - handles error when loadJson fails for a word-details file", async (
     writtenData = JSON.parse(data);
   });
 
-  t.mock.method(fs, "existsSync", (p) => {
-    if (p.includes("makan.json")) return true;
-    return false;
+  t.mock.method(fsPromises, "access", async (p) => {
+    if (p.includes("makan.json")) return;
+    throw new Error("ENOENT");
   });
 
   t.mock.method(fsPromises, "readFile", async (p) => {
