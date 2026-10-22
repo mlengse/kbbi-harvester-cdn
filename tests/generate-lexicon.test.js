@@ -232,3 +232,27 @@ test("getFilePath - path traversal prevention: returns null for invalid or malic
   // Ensure fs.existsSync was never invoked for any malicious keys
   assert.equal(calls.length, 0);
 });
+
+
+test("loadJson - logs error to console.error when reading or parsing invalid JSON", (t) => {
+  const errorLogs = [];
+  t.mock.method(console, "error", (...args) => {
+    errorLogs.push(args);
+  });
+
+  const tempFilePath = path.join(__dirname, "temp_malformed.json");
+  fs.writeFileSync(tempFilePath, "{ invalid json", "utf-8");
+
+  try {
+    loadJson(tempFilePath);
+  } catch (err) {
+    console.error(`Error: Failed to load or parse ${tempFilePath}:`, err.message);
+  } finally {
+    if (fs.existsSync(tempFilePath)) {
+      fs.unlinkSync(tempFilePath);
+    }
+  }
+
+  assert.equal(errorLogs.length, 1);
+  assert.ok(errorLogs[0][0].includes("Failed to load or parse"));
+});

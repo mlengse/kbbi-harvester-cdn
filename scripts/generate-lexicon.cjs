@@ -85,7 +85,7 @@ function main() {
         filesRead++;
         out[key].kelasKata = collectKelasKata(detail);
       } catch (err) {
-        console.warn(`Warning: Failed to load or parse ${filePath}:`, err.message);
+        console.error(`Error: Failed to load or parse ${filePath}:`, err.message);
       }
     }
   }
